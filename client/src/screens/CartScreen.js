@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '../actions/cartActions';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,11 @@ const CartScreen = () => {
                   <i
                     className='fas fa-plus'
                     style={{ color: 'green', margin: '5px' }}
+                    onClick={() => {
+                      dispatch(
+                        addToCart(item, item.quantity + 1, item.varient)
+                      );
+                    }}
                   ></i>
 
                   <b>{item.quantity}</b>
@@ -35,6 +41,11 @@ const CartScreen = () => {
                   <i
                     className='fas fa-minus'
                     style={{ color: 'red', margin: '5px' }}
+                    onClick={() => {
+                      dispatch(
+                        addToCart(item, item.quantity - 1, item.varient)
+                      );
+                    }}
                   ></i>
                   <hr />
                 </div>
