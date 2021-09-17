@@ -27,3 +27,8 @@ select {
   box-shadow: none !important;
   border-color: black !important;
 }
+
+input {
+  margin-top: 10px !important;
+  box-shadow: none;
+}
