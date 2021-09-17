@@ -1,6 +1,10 @@
 import React, { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../actions/authActions';
 
 const RegisterScreen = () => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,12 +18,13 @@ const RegisterScreen = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const register = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
       alert('Passwords not Match!!');
     } else {
-      console.log({ name, email, password });
+      const user = { name, email, password };
+      dispatch(registerUser(user));
     }
   };
 
@@ -29,7 +34,7 @@ const RegisterScreen = () => {
       <p className='lead'>
         <i className='fas fa-user'></i> Create Your Account
       </p>
-      <form className='form' onSubmit={(e) => register(e)}>
+      <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='text'

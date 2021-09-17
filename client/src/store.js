@@ -4,10 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { getAllPizzasReducer } from './reducers/pizzaReducers';
 import { cartReducer } from './reducers/cartReducers';
+import { registerUserReducer } from './reducers/authReducers';
 
 const reducer = combineReducers({
   getAllPizzas: getAllPizzasReducer,
   cart: cartReducer,
+  registerUser: registerUserReducer,
 });
 
 const cartItems = localStorage.getItem('cartItems')

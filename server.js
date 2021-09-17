@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./db');
 const pizzaRoutes = require('./routes/pizzaRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -10,7 +11,9 @@ connectDB();
 // BodyParser
 app.use(express.json());
 
+// Routes
 app.use('/api/pizzas', pizzaRoutes);
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
   res.send('Server Working!!');
