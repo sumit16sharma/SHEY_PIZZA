@@ -1,3 +1,4 @@
 {
-    "jwtSecret": "mysecrettoken"
+    "jwtSecret": "mysecrettoken",
+    "stripeSecretKey": "sk_test_51JcTUwSEnWR3M7tyoqOG3HYKD0UV5oWUSR42hMr0M3iKYLJogv4ryLCmV2TlrFsNOzeFSoC6bGTwBWyl6xowbUO500KTCdzUIC"
 }

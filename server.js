@@ -3,6 +3,7 @@ const connectDB = require('./db');
 const pizzaRoutes = require('./routes/pizzaRoutes');
 const userRoutes = require('./routes/userRoutes');
 const auth = require('./routes/auth');
+const ordersRoute = require('./routes/ordersRoute');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json({ extended: false }));
 app.use('/api/pizzas', pizzaRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/auth', auth);
+app.use('/api/orders', ordersRoute);
 
 app.get('/', (req, res) => {
   res.send('Server Working!!');
