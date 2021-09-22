@@ -24,7 +24,7 @@ const OrderSchema = new mongoose.Schema({
   },
   isDelivered: {
     type: Boolean,
-    required: true,
+    default: false,
   },
   transactionId: {
     type: String,
