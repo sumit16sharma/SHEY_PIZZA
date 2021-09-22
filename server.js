@@ -2,18 +2,20 @@ const express = require('express');
 const connectDB = require('./db');
 const pizzaRoutes = require('./routes/pizzaRoutes');
 const userRoutes = require('./routes/userRoutes');
+const auth = require('./routes/auth');
 
 const app = express();
 
 // Connect Database
 connectDB();
 
-// BodyParser
-app.use(express.json());
+// Init BodyParser
+app.use(express.json({ extended: false }));
 
-// Routes
+// Define Routes
 app.use('/api/pizzas', pizzaRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/auth', auth);
 
 app.get('/', (req, res) => {
   res.send('Server Working!!');

@@ -1,7 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPizzas } from '../actions/pizzaActions';
+import Loading from '../components/Loading';
 import Pizza from '../components/Pizza';
+import { setAlert } from '../actions/alert';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -17,9 +19,9 @@ const HomeScreen = () => {
     <Fragment>
       <div className='row justify-content-center'>
         {loading ? (
-          <h1>Loading</h1>
+          <Loading />
         ) : error ? (
-          <h1>Something went Wrong</h1>
+          dispatch(setAlert('Something went wrong!', 'danger'))
         ) : (
           pizzas.map((pizza) => {
             return (
