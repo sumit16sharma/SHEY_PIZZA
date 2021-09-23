@@ -58,4 +58,19 @@ router.post('/placeorder', async (req, res) => {
   }
 });
 
+// @route  GET api/orders/getuserorders
+// @desc   Get logged in user orders
+// @access Private
+router.post('/getuserorders', async (req, res) => {
+  const { userid } = req.body;
+
+  try {
+    const orders = await Order.find({ userid: userid });
+    res.send(orders);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

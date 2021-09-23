@@ -3,6 +3,9 @@ import {
   PLACE_ORDER_REQUEST,
   PLACE_ORDER_FAILED,
   PLACE_ORDER_SUCCESS,
+  GET_USER_ORDERS_REQUEST,
+  GET_USER_ORDERS_FAIL,
+  GET_USER_ORDERS_SUCCESS,
 } from '../constants/orderConstants';
 
 export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
@@ -24,5 +27,21 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({ type: PLACE_ORDER_FAILED });
     console.log(error);
+  }
+};
+
+export const getUserOrders = () => async (dispatch, getState) => {
+  const user = getState().auth.user;
+
+  try {
+    dispatch({ type: GET_USER_ORDERS_REQUEST });
+
+    const { data } = await axios.post('/api/orders/getuserorders', {
+      userid: user._id,
+    });
+
+    dispatch({ type: GET_USER_ORDERS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: GET_USER_ORDERS_FAIL, payload: error });
   }
 };
