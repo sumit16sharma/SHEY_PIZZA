@@ -45,6 +45,7 @@ export const authReducer = (state = initialState, action) => {
     case AUTH_ERROR:
     case LOGOUT:
       localStorage.removeItem('token');
+      localStorage.removeItem('cartItems');
       return {
         ...state,
         token: null,

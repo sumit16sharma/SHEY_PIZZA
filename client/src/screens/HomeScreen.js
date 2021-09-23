@@ -4,6 +4,7 @@ import { getAllPizzas } from '../actions/pizzaActions';
 import Loading from '../components/Loading';
 import Pizza from '../components/Pizza';
 import { setAlert } from '../actions/alert';
+import Filter from '../components/Filter';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const HomeScreen = () => {
 
   return (
     <Fragment>
+      <Filter />
       <div className='row justify-content-center'>
         {loading ? (
           <Loading />
