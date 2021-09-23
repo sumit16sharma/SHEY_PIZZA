@@ -33,9 +33,9 @@ export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
 export const getUserOrders = () => async (dispatch, getState) => {
   const user = getState().auth.user;
 
-  try {
-    dispatch({ type: GET_USER_ORDERS_REQUEST });
+  dispatch({ type: GET_USER_ORDERS_REQUEST });
 
+  try {
     const { data } = await axios.post('/api/orders/getuserorders', {
       userid: user._id,
     });
