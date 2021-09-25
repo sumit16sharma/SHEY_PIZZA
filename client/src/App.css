@@ -33,4 +33,19 @@ input {
   box-shadow: none;
 }
 
-/* Alert */
+.adminfunctions {
+  padding: 10px;
+  background-color: rgb(4, 4, 62);
+}
+
+.adminfunctions li {
+  list-style-type: none;
+  display: inline;
+  color: white;
+}
+
+.adminfunctions li a {
+  color: white;
+  padding: 20px;
+  text-decoration: none;
+}
