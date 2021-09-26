@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPizza } from '../../actions/pizzaActions';
+import Loading from '../Loading';
+import { Redirect } from 'react-router-dom';
+import { setAlert } from '../../actions/alert';
 
 const AddPizza = () => {
+  const dispatch = useDispatch();
+  const addPizzaState = useSelector((state) => state.addPizza);
+
+  const { success, error, loading } = addPizzaState;
+
   const [name, setName] = useState('');
   const [smallPrice, setSmallPrice] = useState();
   const [mediumPrice, setMediumPrice] = useState();
@@ -24,12 +34,25 @@ const AddPizza = () => {
       category,
     };
 
-    console.log(pizza);
+    dispatch(addPizza(pizza));
+
+    setName('');
+    setMediumPrice('');
+    setSmallPrice('');
+    setLargePrice('');
+    setImage('');
+    setDescription('');
+    setCategory('');
   };
 
   return (
     <div>
       <div className='text-start'>
+        {loading && <Loading />}
+        {error && dispatch(setAlert('Something went wrong!!', 'danger'))}
+        {!loading &&
+          success &&
+          dispatch(setAlert('Pizza Added Successfully', 'success'))}
         <h1>Add Pizza</h1>
         <form onSubmit={(e) => onSubmit(e)}>
           <div class='form-group'>
