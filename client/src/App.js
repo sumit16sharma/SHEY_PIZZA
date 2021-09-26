@@ -10,6 +10,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import OrderScreen from './screens/OrderScreen';
 import AdminScreen from './screens/AdminScreen';
+import ContactScreen from './screens/ContactScreen';
 
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
@@ -34,6 +35,7 @@ const App = () => {
         <Route path='/register' exact component={RegisterScreen} />
         <Route path='/login' exact component={LoginScreen} />
         <Route path='/orders' exact component={OrderScreen} />
+        <Route path='/contact' exact component={ContactScreen} />
         <Route path='/admin' component={AdminScreen} />
       </BrowserRouter>
     </div>

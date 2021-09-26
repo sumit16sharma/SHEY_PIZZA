@@ -49,3 +49,9 @@ input {
   padding: 20px;
   text-decoration: none;
 }
+
+td,
+th,
+tr {
+  text-align: left;
+}
