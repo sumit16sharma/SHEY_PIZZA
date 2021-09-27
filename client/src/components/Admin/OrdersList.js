@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllOrders } from '../../actions/orderActions';
+import { deliverOrder, getAllOrders } from '../../actions/orderActions';
 import Loading from '../Loading';
 import { setAlert } from '../../actions/alert';
 import Moment from 'react-moment';
@@ -14,6 +14,10 @@ const OrdersList = () => {
   useEffect(() => {
     dispatch(getAllOrders());
   }, []);
+
+  const onClick = (orderid) => {
+    dispatch(deliverOrder(orderid));
+  };
 
   return (
     <div>
@@ -45,7 +49,18 @@ const OrdersList = () => {
                   <td>
                     <Moment format='DD/MM/YYYY'>{order.date}</Moment>
                   </td>
-                  <td>Status</td>
+                  <td>
+                    {!order.isDelivered ? (
+                      <button
+                        className='btn'
+                        onClick={() => onClick(order._id)}
+                      >
+                        Deliver
+                      </button>
+                    ) : (
+                      <h1>Delivered</h1>
+                    )}
+                  </td>
                 </tr>
               );
             })}

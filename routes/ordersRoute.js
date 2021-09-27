@@ -84,4 +84,21 @@ router.get('/getallorders', async (req, res) => {
   }
 });
 
+router.post('/deliverorder', async (req, res) => {
+  try {
+    const orderid = req.body.orderid;
+
+    const order = await Order.findById(orderid);
+
+    order.isDelivered = true;
+
+    await order.save();
+
+    res.json(order);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

@@ -60,3 +60,22 @@ export const getAllOrders = () => async (dispatch) => {
     dispatch({ type: GET_ALL_ORDERS_FAIL, payload: error });
   }
 };
+
+export const deliverOrder = (orderid) => async (dispatch) => {
+  try {
+    const { data } = await axios.post('/api/orders/deliverorder', { orderid });
+
+    console.log(data);
+
+    alert('Order Delivered');
+
+    const orders = await axios.get('/api/orders/getallorders');
+    dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: orders.data });
+
+    // window.location.reload();
+  } catch (error) {
+    console.log(error);
+
+    alert('Something went Wrong!!');
+  }
+};
