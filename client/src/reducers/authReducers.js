@@ -7,6 +7,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  GET_ALL_USERS_REQUEST,
+  GET_ALL_USERS_SUCCESS,
+  GET_ALL_USERS_FAIL,
 } from '../constants/authConstants';
 
 const initialState = {
@@ -52,6 +55,31 @@ export const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         loading: false,
         user: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const getAllUsersReducer = (
+  state = { users: [], loading: true },
+  action
+) => {
+  switch (action.type) {
+    case GET_ALL_USERS_REQUEST:
+      return {
+        loading: true,
+        ...state,
+      };
+    case GET_ALL_USERS_SUCCESS:
+      return {
+        loading: false,
+        users: action.payload,
+      };
+    case GET_ALL_USERS_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;

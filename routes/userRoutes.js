@@ -70,4 +70,29 @@ router.post(
   }
 );
 
+router.get('/getallusers', async (req, res) => {
+  try {
+    const users = await User.find({});
+
+    res.json(users);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// DELETE A USER
+router.post('/deleteuser', async (req, res) => {
+  const userid = req.body.userid;
+
+  try {
+    await User.findByIdAndDelete({ _id: userid });
+
+    res.send('User Deleted Successfully');
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

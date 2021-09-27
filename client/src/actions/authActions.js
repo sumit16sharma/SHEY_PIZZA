@@ -8,6 +8,9 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
+  GET_ALL_USERS_FAIL,
+  GET_ALL_USERS_REQUEST,
+  GET_ALL_USERS_SUCCESS,
 } from '../constants/authConstants';
 import setAuthToken from '../utils/setAuthToken';
 import { setAlert } from './alert';
@@ -90,4 +93,30 @@ export const login = (email, password) => async (dispatch) => {
 // LOGOUT
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
+};
+
+export const getallusers = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_ALL_USERS_REQUEST });
+
+    const { data } = await axios.get('/api/users/getallusers');
+
+    dispatch({ type: GET_ALL_USERS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: GET_ALL_USERS_FAIL });
+  }
+};
+
+export const deleteUser = (userid) => async (dispatch) => {
+  try {
+    await axios.post('/api/users/deleteuser', { userid });
+
+    alert('User Deleted Successfully!!');
+
+    window.location.reload();
+  } catch (error) {
+    console.log(error);
+
+    alert('Something went wrong');
+  }
 };

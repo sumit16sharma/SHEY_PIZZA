@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth');
 
 const User = require('../models/User');
+const Order = require('../models/Order');
 
 // @route  GET api/auth
 // @desc   Get User Details
