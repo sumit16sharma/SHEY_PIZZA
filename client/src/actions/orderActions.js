@@ -6,6 +6,9 @@ import {
   GET_USER_ORDERS_REQUEST,
   GET_USER_ORDERS_FAIL,
   GET_USER_ORDERS_SUCCESS,
+  GET_ALL_ORDERS_REQUEST,
+  GET_ALL_ORDERS_SUCCESS,
+  GET_ALL_ORDERS_FAIL,
 } from '../constants/orderConstants';
 
 export const placeOrder = (token, subtotal) => async (dispatch, getState) => {
@@ -43,5 +46,17 @@ export const getUserOrders = () => async (dispatch, getState) => {
     dispatch({ type: GET_USER_ORDERS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: GET_USER_ORDERS_FAIL, payload: error });
+  }
+};
+
+export const getAllOrders = () => async (dispatch) => {
+  dispatch({ type: GET_ALL_ORDERS_REQUEST });
+
+  try {
+    const { data } = await axios.get('/api/orders/getallorders');
+
+    dispatch({ type: GET_ALL_ORDERS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: GET_ALL_ORDERS_FAIL, payload: error });
   }
 };

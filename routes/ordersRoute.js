@@ -73,4 +73,15 @@ router.post('/getuserorders', async (req, res) => {
   }
 });
 
+router.get('/getallorders', async (req, res) => {
+  try {
+    const orders = await Order.find({});
+
+    res.json(orders);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
