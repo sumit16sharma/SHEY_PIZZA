@@ -82,6 +82,8 @@ export const editPizza = (editedpizza) => async (dispatch) => {
 
     dispatch({ type: EDIT_PIZZA_SUCCESS });
 
+    window.location.href = '/admin/pizzaslist';
+
     dispatch({ type: RESET_STATE });
   } catch (error) {
     dispatch({ type: EDIT_PIZZA_FAIL, payload: error });

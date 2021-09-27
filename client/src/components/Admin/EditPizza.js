@@ -39,6 +39,7 @@ const EditPizza = ({ match }) => {
     e.preventDefault();
 
     const editedpizza = {
+      _id: match.params.pizzaid,
       name,
       prices: {
         small: Number(smallPrice),
@@ -60,6 +61,8 @@ const EditPizza = ({ match }) => {
         {error && dispatch(setAlert('Something went wrong!!', 'danger'))}
         {edit_success &&
           dispatch(setAlert('Pizza Details Edited Successfully!!', 'success'))}
+        {edit_loading && <Loading />}
+        {edit_error && dispatch(setAlert('Something went wrong!', 'danger'))}
         <h1>Edit Pizza</h1>
         <form onSubmit={(e) => onSubmit(e)}>
           <div class='form-group'>
