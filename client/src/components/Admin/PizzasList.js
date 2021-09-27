@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../Loading';
 import { Link } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
-import { getAllPizzas } from '../../actions/pizzaActions';
+import { getAllPizzas, deletePizza } from '../../actions/pizzaActions';
 
 const PizzasList = () => {
   const dispatch = useDispatch();
@@ -47,6 +47,9 @@ const PizzasList = () => {
                     <i
                       className='fas fa-trash m-1'
                       style={{ color: 'red' }}
+                      onClick={() => {
+                        dispatch(deletePizza(pizza._id));
+                      }}
                     ></i>{' '}
                     <Link to={`/admin/editpizza/${pizza._id}`}>
                       <i className='fas fa-edit m-1'></i>
