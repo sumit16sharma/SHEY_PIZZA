@@ -10,6 +10,9 @@ import {
   GET_PIZZA_BY_ID_FAIL,
   GET_PIZZA_BY_ID_SUCCESS,
   GET_PIZZA_BY_ID_REQUEST,
+  EDIT_PIZZA_REQUEST,
+  EDIT_PIZZA_SUCCESS,
+  EDIT_PIZZA_FAIL,
 } from '../constants/pizzaConstants';
 
 export const getAllPizzas = () => async (dispatch) => {
@@ -68,5 +71,19 @@ export const getPizzaByID = (pizzaid) => async (dispatch) => {
     dispatch({ type: GET_PIZZA_BY_ID_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: GET_PIZZA_BY_ID_FAIL, payload: error });
+  }
+};
+
+export const editPizza = (editedpizza) => async (dispatch) => {
+  try {
+    dispatch({ type: EDIT_PIZZA_REQUEST });
+
+    await axios.post('/api/pizzas/editpizza', { editedpizza });
+
+    dispatch({ type: EDIT_PIZZA_SUCCESS });
+
+    dispatch({ type: RESET_STATE });
+  } catch (error) {
+    dispatch({ type: EDIT_PIZZA_FAIL, payload: error });
   }
 };

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPizza } from '../../actions/pizzaActions';
 import Loading from '../Loading';
-import { Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 
 const AddPizza = () => {

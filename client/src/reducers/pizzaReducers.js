@@ -9,6 +9,9 @@ import {
   GET_PIZZA_BY_ID_REQUEST,
   GET_PIZZA_BY_ID_SUCCESS,
   GET_PIZZA_BY_ID_FAIL,
+  EDIT_PIZZA_REQUEST,
+  EDIT_PIZZA_SUCCESS,
+  EDIT_PIZZA_FAIL,
 } from '../constants/pizzaConstants';
 
 export const getAllPizzasReducer = (state = { pizzas: [] }, action) => {
@@ -76,6 +79,33 @@ export const getPizzaByIDReducer = (state = {}, action) => {
       return {
         loading: false,
         error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const editPizzaReducer = (state = {}, action) => {
+  switch (action.type) {
+    case EDIT_PIZZA_REQUEST:
+      return {
+        edit_loading: true,
+        ...state,
+      };
+    case EDIT_PIZZA_SUCCESS:
+      return {
+        edit_loading: false,
+        edit_success: true,
+      };
+    case EDIT_PIZZA_FAIL:
+      return {
+        loading: false,
+        edit_error: action.payload,
+      };
+    case RESET_STATE:
+      return {
+        edit_loading: false,
+        edit_success: false,
       };
     default:
       return state;
