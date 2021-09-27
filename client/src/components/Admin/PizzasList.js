@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../Loading';
+import { Link } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { getAllPizzas } from '../../actions/pizzaActions';
 
@@ -43,8 +44,13 @@ const PizzasList = () => {
                   </td>
                   <td>{pizza.category}</td>
                   <td>
-                    <i class='fas fa-trash m-1' style={{ color: 'red' }}></i>{' '}
-                    <i class='fas fa-edit m-1'></i>
+                    <i
+                      className='fas fa-trash m-1'
+                      style={{ color: 'red' }}
+                    ></i>{' '}
+                    <Link to={`/admin/editpizza/${pizza._id}`}>
+                      <i className='fas fa-edit m-1'></i>
+                    </Link>
                   </td>
                 </tr>
               );

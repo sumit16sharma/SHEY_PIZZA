@@ -6,6 +6,9 @@ import {
   ADD_PIZZA_SUCCESS,
   ADD_PIZZA_FAIL,
   RESET_STATE,
+  GET_PIZZA_BY_ID_REQUEST,
+  GET_PIZZA_BY_ID_SUCCESS,
+  GET_PIZZA_BY_ID_FAIL,
 } from '../constants/pizzaConstants';
 
 export const getAllPizzasReducer = (state = { pizzas: [] }, action) => {
@@ -51,6 +54,28 @@ export const addPizzaReducer = (state = {}, action) => {
       return {
         loading: false,
         success: false,
+      };
+    default:
+      return state;
+  }
+};
+
+export const getPizzaByIDReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_PIZZA_BY_ID_REQUEST:
+      return {
+        loading: true,
+        ...state,
+      };
+    case GET_PIZZA_BY_ID_SUCCESS:
+      return {
+        loading: false,
+        pizza: action.payload,
+      };
+    case GET_PIZZA_BY_ID_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
       };
     default:
       return state;

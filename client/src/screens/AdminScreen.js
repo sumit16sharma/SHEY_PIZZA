@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { Link, Redirect } from 'react-router-dom';
 import AddPizza from '../components/Admin/AddPizza';
+import EditPizza from '../components/Admin/EditPizza';
 import OrdersList from '../components/Admin/OrdersList';
 import PizzasList from '../components/Admin/PizzasList';
 import UsersList from '../components/Admin/UsersList';
@@ -44,6 +45,11 @@ const AdminScreen = () => {
             <Route exact path='/admin/pizzaslist' component={PizzasList} />
             <Route exact path='/admin/addpizza' component={AddPizza} />
             <Route exact path='/admin/orderslist' component={OrdersList} />
+            <Route
+              exact
+              path='/admin/editpizza/:pizzaid'
+              component={EditPizza}
+            />
           </Switch>
         </div>
       </div>
