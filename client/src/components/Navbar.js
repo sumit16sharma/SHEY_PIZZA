@@ -56,14 +56,26 @@ const Navbar = () => {
   );
 
   return (
-    <nav className='navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-white rounded'>
+    <nav className='navbar navbar-expand-lg shadow-lg p-3 mb-5 navbar-dark bg-dark rounded'>
       <div className='container-fluid'>
-        <Link className='navbar-brand' to='/'>
+        <Link className='navbar-brand mr-auto' to='/'>
           SHEY PIZZA <i class='fas fa-pizza-slice'></i>
         </Link>
 
+        <button
+          class='navbar-toggler'
+          type='button'
+          data-toggle='collapse'
+          data-target='#navbarNav'
+          aria-controls='navbarSupportedContent'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+        >
+          <span class='navbar-toggler-icon'></span>
+        </button>
+
         <div className='collapse navbar-collapse' id='navbarNav'>
-          <ul className='navbar-nav ms-auto'>
+          <ul className='navbar-nav ms-auto ml-auto'>
             <li className='nav-item'>
               <Link className='nav-link' to='/cart'>
                 <i class='fas fa-shopping-cart'></i> Cart{' '}
