@@ -2,9 +2,13 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart, deleteFromCart } from '../actions/cartActions';
 import CheckOut from '../components/CheckOut';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
+
+  AOS.init();
 
   const cartState = useSelector((state) => state.cart);
   const cartItems = cartState.cartItems;
@@ -13,7 +17,7 @@ const CartScreen = () => {
 
   return (
     <div>
-      <div className='row justify-content-center'>
+      <div data-aos='fade-down' className='row justify-content-center p-2'>
         <div className='col-md-6'>
           <h2 style={{ fontSize: '40px' }}>My Cart</h2>
 

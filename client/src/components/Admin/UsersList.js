@@ -19,7 +19,7 @@ const UsersList = () => {
       <h1>Users List</h1>
       {loading && <Loading />}
       {error && dispatch(setAlert('Something went wrong!!', 'danger'))}
-      <table className='table table-striped table-bordered'>
+      <table className='table table-striped table-bordered table-responsive-sm'>
         <thead className='table-dark'>
           <tr>
             <th>User ID</th>

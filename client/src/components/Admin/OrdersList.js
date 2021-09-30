@@ -23,7 +23,7 @@ const OrdersList = () => {
     <div>
       <h1>Orders List</h1>
 
-      <table className='table table-striped table-bordered'>
+      <table className='table table-striped table-bordered table-responsive-sm'>
         <thead className='table-dark'>
           <tr>
             <th>Order Id</th>

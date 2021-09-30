@@ -46,7 +46,7 @@ const AddPizza = () => {
 
   return (
     <div>
-      <div className='text-start'>
+      <div className='text-start shadow-lg p-3 mb-5 bg-white rounded'>
         {loading && <Loading />}
         {error && dispatch(setAlert('Something went wrong!!', 'danger'))}
         {!loading &&

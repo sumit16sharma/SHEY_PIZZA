@@ -1,6 +1,8 @@
-body {
+body,
+html {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+  overflow-x: hidden;
 }
 
 .nav-link {
@@ -21,6 +23,7 @@ h1 {
 .btn {
   background-color: red !important;
   color: white !important;
+  box-shadow: none !important;
 }
 
 select {
@@ -54,6 +57,12 @@ td,
 th,
 tr {
   text-align: left;
+}
+
+.table {
+  display: block !important;
+  overflow-x: auto !important;
+  width: 100% !important;
 }
 
 /* NOT FOUND */

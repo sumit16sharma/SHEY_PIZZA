@@ -20,7 +20,7 @@ const AdminScreen = () => {
 
   return (
     <div>
-      <div className='row justify-content-center'>
+      <div className='row justify-content-center p-3'>
         <div className='col-md-10'>
           <h2 style={{ fontSize: '35px' }}>Admin Panel</h2>
 
@@ -32,7 +32,7 @@ const AdminScreen = () => {
               <Link to='/admin/pizzaslist'>Pizzas List</Link>
             </li>
             <li>
-              <Link to='/admin/addpizza'>Add New Pizza</Link>
+              <Link to='/admin/addpizza'>Add Pizza</Link>
             </li>
             <li>
               <Link to='/admin/orderslist'>Orders List</Link>

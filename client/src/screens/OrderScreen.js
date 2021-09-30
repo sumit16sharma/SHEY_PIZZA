@@ -4,9 +4,13 @@ import { getUserOrders } from '../actions/orderActions';
 import Loading from '../components/Loading';
 import { setAlert } from '../actions/alert';
 import Moment from 'react-moment';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const OrderScreen = () => {
   const dispatch = useDispatch();
+
+  AOS.init();
 
   const orderState = useSelector((state) => state.getUserOrders);
   const { loading, error, orders } = orderState;
@@ -26,6 +30,7 @@ const OrderScreen = () => {
           orders.map((order) => {
             return (
               <div
+                data-aos='fade-down'
                 className='col-md-8 m-2'
                 style={{ backgroundColor: 'red', color: 'white' }}
               >

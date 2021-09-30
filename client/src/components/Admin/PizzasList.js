@@ -20,7 +20,7 @@ const PizzasList = () => {
       <h2>Pizzas List</h2>
 
       {error && dispatch(setAlert, 'Something went wrong!')}
-      <table className='table table-bordered'>
+      <table className='table table-bordered table-responsive-sm'>
         <thead className='thead table-dark'>
           <tr>
             <th>Name</th>
