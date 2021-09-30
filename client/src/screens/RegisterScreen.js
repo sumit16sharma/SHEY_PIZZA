@@ -38,7 +38,7 @@ const RegisterScreen = () => {
   }
 
   return (
-    <Fragment>
+    <div className='register'>
       <div className='row justify-content-center mt-10'>
         <div
           className='col-md-5 shadow-lg p-3 mb-5 bg-white rounded'
@@ -100,7 +100,7 @@ const RegisterScreen = () => {
           </p>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

@@ -31,7 +31,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <Fragment>
+    <div className='login'>
       <div className='row justify-content-center mt-10'>
         <div
           className='col-md-5 shadow-lg p-3 mb-5 bg-white rounded'
@@ -71,7 +71,7 @@ const LoginScreen = () => {
           </p>
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
